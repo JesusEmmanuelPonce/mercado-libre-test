@@ -1,12 +1,32 @@
 import type { NextPage } from 'next';
-import AppLayout from '../components/AppLayout/AppLayout';
+import { GetStaticProps } from 'next'
 
-const Home: NextPage = () => {
+import AppLayout from '../components/AppLayout/AppLayout';
+import axiosClient from '../helpers/axiosClient';
+import ProductsList from '../components/ProductsList';
+import { IDataMlResponse, IResult } from '../interfaces';
+
+interface IHomeProps {
+	products: IResult[],
+}
+
+const Home: NextPage<IHomeProps> = ({ products }) => {
 	return (
 		<AppLayout>
-			hola
+			<ProductsList products={products} />
 		</AppLayout>
 	)
 }
 
-export default Home
+export const getStaticProps: GetStaticProps = async (ctx) => {
+	
+	const { data } = await axiosClient.get<IDataMlResponse>("/search?q=Apple ipod");
+
+	return {
+		props: {
+			products: data?.results,
+		}
+	}
+}
+
+export default Home;
