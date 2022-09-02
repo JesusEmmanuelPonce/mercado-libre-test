@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import { FC } from 'react';
-import { IResult } from '../../interfaces';
 
+import { IResult } from '../../interfaces';
+import { currencyFormat } from '../../helpers/currencyFormat';
 import styles from "./productsList.module.scss"
 
 interface IProductsListProps {
@@ -20,15 +20,19 @@ const ProductsList: FC<IProductsListProps> = ({ products }) => {
                     className={styles.productListWrap__row}
                 >
                     <div className={styles.content}>
-                        <img src={product?.thumbnail} alt="product ml" />
-                        <div>
-                            <p>{product?.price}</p>
-                            <p>{product?.title}</p>
-                            <p>Completo Unico!</p>
+                        <img
+                            src={product?.thumbnail}
+                            alt="product ml"
+                            className={styles.productImage}
+                        />
+                        <div className={styles.productDescription}>
+                            <div className={styles.productDescription__priceAndLabel}>
+                                <p>{currencyFormat(product?.price)}</p>
+                                <span>{product?.address?.state_name}</span>
+                            </div>
+                            <p className={styles.productDescription__title}>{product?.title}</p>
+                            <p className={styles.productDescription__tag}>Completo Unico!</p>
                         </div>
-                    </div>
-                    <div>
-                        Capital Federal
                     </div>
                 </li>
             )) }

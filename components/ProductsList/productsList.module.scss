@@ -4,13 +4,54 @@
 
     &__row {
         display: flex;
-        justify-content: space-between;
 
         border-bottom: 1px solid #eee;
-        margin: 5px;
-
-        & .content {
+        padding-right: 4rem;
+        padding: 16px;
+        padding-right: 60px;
+        width: 100%;
+        
+        .content {
             display: flex;
+            width: 100%;
+            
+            p {
+                color: #666;
+                margin: 0;
+            }
+            
+            .productImage {
+                border-radius: 4px;
+                height: 180px;
+                width: 180px;
+            }
+            
+            .productDescription {
+                margin-left: 16px;
+                width: 100%;
+                
+                &__priceAndLabel {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 16px;
+
+                    p {
+                        color: #333;
+                        font-size: 24px;
+                        margin-bottom: 32px;
+                    }
+
+                    span {
+                        color: #999;
+                        font-size: 12px;
+                    }
+                }
+
+                &__title,
+                &__tag {
+                    font-size: 18px;
+                }
+            }
         }
     }
 }

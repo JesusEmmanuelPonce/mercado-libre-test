@@ -23,7 +23,7 @@ export interface IResult {
     title: string;
     seller: [Object];
     price: number;
-    prices: [Object];
+    prices: IPrices;
     sale_price: number | string | null;
     currency_id: string;
     available_quantity: number;
@@ -36,10 +36,10 @@ export interface IResult {
     thumbnail: string;
     thumbnail_id: string;
     accepts_mercadopago: boolean;
-    installments: [Object];
+    installments: IInstallments;
     address: IAddress;
     shipping: IShipping;
-    seller_address: [Object];
+    seller_address: ISellerAddress;
     attributes: any;
     original_price: number | string | null;
     category_id: string;
@@ -57,11 +57,50 @@ export interface IResult {
     discounts: number | string | null;
 }
 
+export interface ISeller {
+    id: number,
+    permalink: string,
+    registration_date: string | Date,
+    car_dealer: boolean,
+    real_estate_agency: boolean,
+    tags: string[],
+    eshop: [Object],
+    seller_reputation: [Object]
+}
+
+export interface IPrices {
+    id: string,
+    prices: number[],
+    presentation: [Object],
+    payment_method_prices: string[],
+    reference_prices: number[],
+    purchase_discounts: number[]
+}
+
+export interface IInstallments {
+    quantity: number;
+    amount: number;
+    rate: number;
+    currency_id: string;
+}
+
 export interface IAddress {
     state_id: string;
     state_name: string;
     city_id: string;
     city_name: string;
+}
+
+export interface ISellerAddress {
+    id: string;
+    comment: string;
+    address_line: string;
+    zip_code: string;
+    country: [Object];
+    state: [Object];
+    city: [Object];
+    latitude: string;
+    longitude: string;
 }
 
 export interface IShipping {
