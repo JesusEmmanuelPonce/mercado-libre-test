@@ -1,37 +1,43 @@
 import { FC } from 'react';
 
-import { IResult } from '../../interfaces';
+import { IProductItems } from '../../interfaces';
 import { currencyFormat } from '../../helpers/currencyFormat';
 import styles from "./productsList.module.scss"
+import { useRouter } from 'next/router';
 
 interface IProductsListProps {
-    products: IResult[]
+    products: IProductItems[]
 };
-
 
 const ProductsList: FC<IProductsListProps> = ({ products }) => {
 
-    console.log(products);
+    const router = useRouter();
+
+    const handleGoToDeatil = (id: string) => {
+        router.push(`/items/${id}`)
+    };
+
     return (
         <ul className={styles.productListWrap}>
-            { products.map((product: IResult) => (
+            { products.map((product: IProductItems) => (
                 <li
                     key={product?.id}
                     className={styles.productListWrap__row}
+                    onClick={() => handleGoToDeatil(product?.id)}
                 >
                     <div className={styles.content}>
                         <img
-                            src={product?.thumbnail}
+                            src={product?.picture}
                             alt="product ml"
                             className={styles.productImage}
                         />
                         <div className={styles.productDescription}>
                             <div className={styles.productDescription__priceAndLabel}>
-                                <p>{currencyFormat(product?.price)}</p>
-                                <span>{product?.address?.state_name}</span>
+                                <p>{currencyFormat(product?.price?.amount)}</p>
+                                <span>{product?.condition}</span>
                             </div>
                             <p className={styles.productDescription__title}>{product?.title}</p>
-                            <p className={styles.productDescription__tag}>Completo Unico!</p>
+                            <p className={styles.productDescription__tag}>{product?.condition}</p>
                         </div>
                     </div>
                 </li>

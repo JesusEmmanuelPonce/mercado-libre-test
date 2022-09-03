@@ -3,11 +3,11 @@ import { GetStaticProps } from 'next'
 
 import AppLayout from '../components/AppLayout/AppLayout';
 import axiosClient from '../helpers/axiosClient';
+import { IProductItems, IResult } from '../interfaces';
 import ProductsList from '../components/ProductsList';
-import { IDataMlResponse, IResult } from '../interfaces';
 
 interface IHomeProps {
-	products: IResult[],
+	products: IProductItems[],
 }
 
 const Home: NextPage<IHomeProps> = ({ products }) => {
@@ -20,11 +20,25 @@ const Home: NextPage<IHomeProps> = ({ products }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	
-	const { data } = await axiosClient.get<IDataMlResponse>("/search?q=Apple ipod");
+	const { data } = await axiosClient.get("/sites/MLA/search?q=Apple ipod&limit=4");
+
+	const results = data?.results.map((item: IResult) => ({
+		id: item?.id,
+		title: item?.title,
+		categories: [],
+		price: {
+			currency: item?.currency_id,
+			amount: item?.price,
+			decimals: item?.price
+		},
+		picture: item?.thumbnail,
+		condition: item?.condition,
+		free_shipping: item?.shipping?.free_shipping
+	}));
 
 	return {
 		props: {
-			products: data?.results,
+			products: results,
 		}
 	}
 }
