@@ -1,6 +1,7 @@
 .items {
     background: #fff;
     padding: 32px;
+    margin-bottom: 32px;
     
     &__row {
         display: flex;
@@ -56,6 +57,21 @@
                     background-color: #2968c8;
                 }
             }
+        }
+    }
+
+    &__wrapperText {
+        margin-top: 20px;
+
+        h3 {
+            font-size: 28px;
+        }
+
+        p {
+            color: #999;
+            font-size: 16px;
+            width: 65%;
+            white-space: pre-line;
         }
     }
 }
