@@ -1,11 +1,11 @@
-import { NextPage, GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
+import { NextPage, GetServerSideProps } from 'next';
 
 import AppLayout from '../../components/AppLayout';
 import axiosClient from '../../helpers/axiosClient';
-import { IBodyItem, IResult } from '../../interfaces';
-import styles from "./items.module.scss";
-import { currencyFormat } from '../../helpers/currencyFormat';
+import { IBodyItem } from '../../interfaces';
 import { getCondition } from '../../helpers/getCondition';
+import { currencyFormat } from '../../helpers/currencyFormat';
+import styles from "./items.module.scss";
 
 interface IProductDetailProps {
     product: IBodyItem;

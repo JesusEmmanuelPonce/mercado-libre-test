@@ -27,6 +27,7 @@ const InputSearch: FC<IInputSearchProps> = ({}) => {
             />
             <button
                 type="button"
+                className={styles.inputSearch__btn}
                 onClick={handleSearch}
             >
                  <Image
