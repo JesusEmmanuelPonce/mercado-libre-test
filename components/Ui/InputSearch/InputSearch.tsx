@@ -1,17 +1,21 @@
+import { useRouter } from 'next/router';
+import { ChangeEvent, FC, useState } from "react";
+
 import Image from "next/image";
 import styles from "./inputSearch.module.scss"
 import Ic_Search from "../../../public/img/ic_Search.png"
-import { ChangeEvent, FC, useState } from "react";
 
 interface IInputSearchProps {};
 
 const InputSearch: FC<IInputSearchProps> = ({}) => {
 
+    const router = useRouter();
+
     const [search, setSearch] = useState<string>("")
 
     const handleSearch = () => {
-        console.log("Searching...");
-    }
+        router.push(`/search/${search}`)
+    };
 
     return (
         <div className={styles.inputSearch}>

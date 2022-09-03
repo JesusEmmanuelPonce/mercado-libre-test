@@ -10,7 +10,7 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = ({}) => {
             <li>iPod {" > "}</li>
             <li>Reproductores {" > "}</li>
             <li>iPod touch {" > "}</li>
-            <li>32 GB</li>
+            <li className={styles.active}>32 GB</li>
         </ul>
     )
 }

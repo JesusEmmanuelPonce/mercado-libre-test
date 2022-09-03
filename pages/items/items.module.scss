@@ -12,7 +12,7 @@
             justify-content: center;
 
             margin-top: 0;
-            width: 65%;
+            width: 680px;
 
             img {
                 width: 100%;
@@ -20,19 +20,21 @@
         }
 
         &__description {
-            width: 35%;
 
             .condition {
+                color: #666;
                 font-size: 14px;
                 margin-bottom: 16px;
             }
 
             .title {
+                color: #333;
                 font-size: 24px;
                 margin-bottom: 32px;
             }
 
             .price {
+                color: #333;
                 font-size: 46px;
                 margin-bottom: 32px;
             }
@@ -61,7 +63,7 @@
     }
 
     &__wrapperText {
-        margin-top: 20px;
+        margin-top: 70px;
 
         h3 {
             font-size: 28px;
@@ -70,7 +72,7 @@
         p {
             color: #999;
             font-size: 16px;
-            width: 65%;
+            width: 680px;
             white-space: pre-line;
         }
     }

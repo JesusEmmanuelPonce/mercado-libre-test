@@ -1,9 +1,13 @@
 .breadcrumbWrap {
     display: flex;
-    margin: 10px 0;
-    padding: 5px 0;
+    margin: 16px 0;
     
     li {
+        color: #666;
         margin-right: 5px;
+
+        .active {
+            font-weight: 700;
+        }
     }
 }

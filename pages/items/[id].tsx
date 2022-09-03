@@ -1,4 +1,4 @@
-import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
+import { NextPage, GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
 
 import AppLayout from '../../components/AppLayout';
 import axiosClient from '../../helpers/axiosClient';
@@ -34,20 +34,9 @@ const ProductDetail: NextPage<IProductDetailProps> = ({ product }) => {
             </section>
         </AppLayout>
     )
-}
+};
 
-export const getStaticPaths: GetStaticPaths = async() => {
-    const { data } = await axiosClient.get("/sites/MLA/search?q=Apple ipod");
-
-    return {
-        paths: data?.results.map((product: IResult) => ({
-            params: { id: product?.id }
-        })),
-        fallback: false,
-    }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
     const { id } = params as { id: string };
 
