@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, KeyboardEvent, useState } from "react";
 
 import Image from "next/image";
 import styles from "./inputSearch.module.scss"
-import Ic_Search from "../../../public/img/ic_Search.png"
+import Ic_Search from "/public/img/ic_Search.png"
 
 interface IInputSearchProps {};
 
@@ -17,6 +17,12 @@ const InputSearch: FC<IInputSearchProps> = ({}) => {
         router.push(`/search/${search}`)
     };
 
+    const onKeyPressSearch = ({ code }: KeyboardEvent<HTMLInputElement>) => {
+        if(code === "Enter") {
+            handleSearch();
+        }
+    };
+
     return (
         <div className={styles.inputSearch}>
             <input
@@ -24,6 +30,7 @@ const InputSearch: FC<IInputSearchProps> = ({}) => {
                 value={search}
                 placeholder="Nunca dejes de buscar"
                 onChange={({ target: { value } }: ChangeEvent<HTMLInputElement>) => setSearch(value)}
+                onKeyPress={onKeyPressSearch}
             />
             <button
                 type="button"

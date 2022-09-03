@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { FC } from 'react';
 import { useRouter } from 'next/router';
 
-import Logo  from "../../public/img/logo.png"
+import Logo  from "/public/img/logo.png"
 import InputSearch from '../Ui/InputSearch';
 import styles from "./navbar.module.scss";
 

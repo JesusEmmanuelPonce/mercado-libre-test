@@ -4,14 +4,18 @@ import AppLayout from '../../components/AppLayout/AppLayout';
 import axiosClient from '../../helpers/axiosClient';
 import ProductsList from '../../components/ProductsList';
 import { IProductItems, IResult } from '../../interfaces';
+import { setTitleTag } from '../../helpers/setTags';
 
 interface ISearchProps {
+	search: string;
 	products: IProductItems[],
 }
 
-const Search: NextPage<ISearchProps> = ({ products }) => {
+const Search: NextPage<ISearchProps> = ({ products, search }) => {
 	return (
-		<AppLayout>
+		<AppLayout
+			titleTag={setTitleTag(search)}
+		>
 			<ProductsList products={products} />
 		</AppLayout>
 	)
@@ -39,6 +43,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 	return {
 		props: {
+			search,
 			products: results
 		}
 	}

@@ -6,8 +6,9 @@ interface IHomeProps {}
 
 const Home: NextPage<IHomeProps> = ({}) => {
 	return (
-		<AppLayout>
-		</AppLayout>
+		<AppLayout
+			titleTag="Mercado Libre México - Envíos Gratis en el día"
+		/>
 	)
 }
 
