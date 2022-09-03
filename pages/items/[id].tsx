@@ -3,6 +3,8 @@ import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import AppLayout from '../../components/AppLayout';
 import axiosClient from '../../helpers/axiosClient';
 import { IBodyItem, IResult } from '../../interfaces';
+import styles from "./items.module.scss";
+import { currencyFormat } from '../../helpers/currencyFormat';
 
 interface IProductDetailProps {
     product: IBodyItem;
@@ -14,7 +16,19 @@ const ProductDetail: NextPage<IProductDetailProps> = ({ product }) => {
 
     return (
         <AppLayout>
-            <div>ProductDetail</div>
+            <section className={styles.items}>
+                <div className={styles.items__row}>
+                    <figure className={styles.items__row__img}>
+                        <img src={product?.item?.picture} alt="" />
+                    </figure>
+                    <div className={styles.items__row__description}>
+                        <p className={styles.condition}>{product?.item?.condition} - {product?.item?.sold_quantity}</p>
+                        <p className={styles.title}>{product?.item?.title}</p>
+                        <p className={styles.price}>{currencyFormat(product?.item?.price?.amount)}</p>
+                        <button>Comprar</button>
+                    </div>
+                </div>
+            </section>
         </AppLayout>
     )
 }
