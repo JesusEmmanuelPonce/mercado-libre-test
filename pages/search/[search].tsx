@@ -5,6 +5,7 @@ import axiosClient from '../../helpers/axiosClient';
 import ProductsList from '../../components/ProductsList';
 import { IProductItems, IResult } from '../../interfaces';
 import { setTitleTag } from '../../helpers/setTags';
+import { getCategories } from '../../helpers/getCategories';
 
 interface ISearchProps {
 	search: string;
@@ -27,10 +28,12 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 	    const { data } = await axiosClient.get(`/sites/MLA/search?q=${search}&limit=4`);
 
+		const categories = getCategories(data.available_filters[0].values);
+
 		const results = data?.results.map((item: IResult) => ({
 			id: item?.id,
 			title: item?.title,
-			categories: [],
+			categories,
 			price: {
 				currency: item?.currency_id,
 				amount: item?.price,
@@ -40,6 +43,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 			condition: item?.condition,
 			free_shipping: item?.shipping?.free_shipping
 		}));
+
+		console.log(results);
 
 	return {
 		props: {
