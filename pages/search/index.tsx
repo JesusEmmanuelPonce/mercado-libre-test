@@ -8,27 +8,27 @@ import { setTitleTag } from '../../helpers/setTags';
 import { getCategories } from '../../helpers/getCategories';
 
 interface ISearchProps {
-	search: string;
+	query: string;
 	products: IProductItems[],
 }
 
-const Search: NextPage<ISearchProps> = ({ products, search }) => {
+const Search: NextPage<ISearchProps> = ({ products, query }) => {
 	return (
 		<AppLayout
-			titleTag={setTitleTag(search)}
+			titleTag={setTitleTag(query)}
 		>
 			<ProductsList products={products} />
 		</AppLayout>
 	)
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
-	const { search } = params as { search: string };
+	const { q } = query as { q: string };
 
-	    const { data } = await axiosClient.get(`/sites/MLA/search?q=${search}&limit=4`);
+	    const { data } = await axiosClient.get(`/sites/MLA/search?q=${q}&limit=4`);
 
-		const categories = getCategories(data.available_filters[0].values);
+		const categories = getCategories(data.available_filters[0]?.values);
 
 		const results = data?.results.map((item: IResult) => ({
 			id: item?.id,
@@ -44,11 +44,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 			free_shipping: item?.shipping?.free_shipping
 		}));
 
-		console.log(results);
-
 	return {
 		props: {
-			search,
+			query: q,
 			products: results
 		}
 	}

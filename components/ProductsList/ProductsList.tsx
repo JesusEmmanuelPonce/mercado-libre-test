@@ -34,7 +34,7 @@ const ProductsList: FC<IProductsListProps> = ({ products }) => {
                         <div className={styles.productDescription}>
                             <div className={styles.productDescription__priceAndLabel}>
                                 <p>{currencyFormat(product?.price?.amount)}</p>
-                                <span>{product?.condition}</span>
+                                <span>Capital Federal</span>
                             </div>
                             <p className={styles.productDescription__title}>{product?.title}</p>
                             <p className={styles.productDescription__tag}>{product?.condition}</p>

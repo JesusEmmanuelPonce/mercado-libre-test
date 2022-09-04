@@ -6,6 +6,7 @@ import { IBodyItem } from '../../interfaces';
 import { getCondition } from '../../helpers/getCondition';
 import { currencyFormat } from '../../helpers/currencyFormat';
 import styles from "./items.module.scss";
+import { setTitleTag } from '../../helpers/setTags';
 
 interface IProductDetailProps {
     product: IBodyItem;
@@ -14,14 +15,16 @@ interface IProductDetailProps {
 const ProductDetail: NextPage<IProductDetailProps> = ({ product }) => {
 
     return (
-        <AppLayout>
+        <AppLayout
+            titleTag={setTitleTag("")}
+        >
             <section className={styles.items}>
                 <div className={styles.items__row}>
                     <figure className={styles.items__row__img}>
                         <img src={product?.item?.picture} alt="" />
                     </figure>
                     <div className={styles.items__row__description}>
-                        <p className={styles.condition}>{getCondition(product?.item?.condition)} - {product?.item?.sold_quantity}</p>
+                        <p className={styles.condition}>{getCondition(product?.item?.condition)} - {product?.item?.sold_quantity} vendidos</p>
                         <p className={styles.title}>{product?.item?.title}</p>
                         <p className={styles.price}>{currencyFormat(product?.item?.price?.amount)}</p>
                         <button>Comprar</button>
@@ -56,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
                 amount: data?.price,
                 decimals: data?.price,
             },
-            picture: data?.thumbnail,
+            picture: data?.pictures[0]?.url,
             condition: data?.condition,
             free_shipping: data?.shipping?.free_shipping,
             sold_quantity: data?.sold_quantity,
