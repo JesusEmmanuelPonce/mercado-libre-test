@@ -14,7 +14,7 @@ const InputSearch: FC<IInputSearchProps> = ({}) => {
     const [search, setSearch] = useState<string>("")
 
     const handleSearch = () => {
-        router.push(`/search?q=${search}`)
+        router.push(`/items?search=${search}`)
     };
 
     const onKeyPressSearch = ({ code }: KeyboardEvent<HTMLInputElement>) => {

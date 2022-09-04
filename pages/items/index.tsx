@@ -24,9 +24,9 @@ const Search: NextPage<ISearchProps> = ({ products, query }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
-	const { q } = query as { q: string };
+	const { search } = query as { search: string };
 
-		const data = await getProducts(q);
+		const data = await getProducts(search);
 
 		const categories = getCategories(data?.available_filters[0]?.values);
 
@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
 	return {
 		props: {
-			query: q,
+			query: search,
 			products: results
 		}
 	}
