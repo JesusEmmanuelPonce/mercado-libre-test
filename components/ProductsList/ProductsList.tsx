@@ -52,7 +52,7 @@ const ProductsList: FC<IProductsListProps> = ({ products }) => {
                                 <span>Capital Federal</span>
                             </div>
                             <p className={styles.productDescription__title}>{product?.title}</p>
-                            <p className={styles.productDescription__tag}>{product?.condition}</p>
+                            {/* <p className={styles.productDescription__tag}>{product?.condition}</p> */}
                         </div>
                     </div>
                 </li>
