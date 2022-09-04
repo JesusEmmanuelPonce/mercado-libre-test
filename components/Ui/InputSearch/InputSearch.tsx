@@ -42,6 +42,7 @@ const InputSearch: FC<IInputSearchProps> = ({}) => {
                     alt="input search icon"
                     width={20}
                     height={20}
+                    layout="fixed"
                 />
             </button>
         </div>

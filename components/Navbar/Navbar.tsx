@@ -29,6 +29,7 @@ const Navbar: FC<INavbarProps> = ({}) => {
                         alt="input search icon"
                         height={40}
                         width={60}
+                        layout="fixed"
                     />
                 </button>
                 <InputSearch />

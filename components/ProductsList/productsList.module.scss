@@ -43,10 +43,15 @@
                     justify-content: space-between;
                     margin-top: 16px;
 
-                    p {
-                        color: #333;
-                        font-size: 24px;
-                        margin-bottom: 32px;
+                    .prices{
+                        display: flex;
+
+                        p {
+                            color: #333;
+                            font-size: 24px;
+                            margin-bottom: 32px;
+                            margin-right: 10px;
+                        }
                     }
 
                     span {
