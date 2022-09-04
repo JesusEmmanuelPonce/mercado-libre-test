@@ -14,6 +14,14 @@ export interface IResult {
     thumbnail_id: string;
     shipping: IShipping;
     tags: string[];
+    address: IAddress;
+}
+
+interface IAddress {
+    state_id: string;
+    state_name: string;
+    city_id: null;
+    city_name: string;
 }
 
 interface IShipping {
@@ -27,18 +35,19 @@ interface IShipping {
 // &&&&&&&&&&&&&&&&&&&&&&&&&&
 
 export interface IProduct {
-    author: IAuthor,
-    categories: string[],
-    items: IProductItems[]
+    author: IAuthor;
+    categories: string[];
+    items: IProductItems[];
 };
 
 export interface IProductItems {
-    id: string,
-    title: string,
-    price: IPriceItem,
-    picture: string,
-    condition: string,
-    free_shipping: boolean
+    id: string;
+    title: string;
+    price: IPriceItem;
+    picture: string;
+    condition: string;
+    free_shipping: boolean;
+    address: string;
 }
 
 // &&&&&&&&&&&&&&&&&&&&&&&&&
@@ -65,7 +74,7 @@ interface IItem {
 }
 
 interface IPriceItem {
-    currency: string,
-    amount: number,
-    decimals: number,
+    currency: string;
+    amount: number;
+    decimals: number;
 }

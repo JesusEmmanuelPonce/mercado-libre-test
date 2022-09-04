@@ -41,7 +41,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 			},
 			picture: item?.thumbnail,
 			condition: item?.condition,
-			free_shipping: item?.shipping?.free_shipping
+			free_shipping: item?.shipping?.free_shipping,
+			address: item?.address?.state_name
 		}));
 
 	return {

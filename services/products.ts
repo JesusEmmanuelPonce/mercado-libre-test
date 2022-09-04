@@ -5,7 +5,7 @@ export const getProducts = async(query: string) => {
     const secureQuery = encodeURI(query)
 
     try {
-        const { data } = await axiosClient.get(`/sites/MLA/search?q=${secureQuery}&limit=4`);    
+        const { data } = await axiosClient.get(`/sites/MLA/search?q=${secureQuery}&limit=4`);
 
         return data;
 
