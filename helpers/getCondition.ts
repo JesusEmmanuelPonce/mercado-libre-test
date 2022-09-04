@@ -6,4 +6,4 @@ export const getCondition = (condition: string) => {
         default: 
             return condition;
     }
-}
+};

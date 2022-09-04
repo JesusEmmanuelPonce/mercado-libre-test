@@ -9,7 +9,7 @@ import styles from "./applayout.module.scss";
 interface IAppLayoutProps {
     titleTag?: string;
     children?: ReactNode;
-}
+};
 
 const AppLayout: FC<IAppLayoutProps> = ({ children, titleTag }) => {
 
@@ -31,6 +31,6 @@ const AppLayout: FC<IAppLayoutProps> = ({ children, titleTag }) => {
             </main>
         </>
     )
-}
+};
 
 export default AppLayout;

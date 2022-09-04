@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 
 import AppLayout from '../components/AppLayout/AppLayout';
 
-interface IHomeProps {}
+interface IHomeProps {};
 
 const Home: NextPage<IHomeProps> = ({}) => {
 	return (

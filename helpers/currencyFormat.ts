@@ -14,4 +14,4 @@ export const currencyFormat = (amount: number | string ) => {
     });
 
     return currency.format(amountNumber);
-}
+};

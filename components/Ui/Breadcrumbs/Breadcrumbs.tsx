@@ -1,7 +1,8 @@
 import { FC } from "react";
+
 import styles from "./breadcrumbs.module.scss";
 
-interface IBreadcrumbsProps {}
+interface IBreadcrumbsProps {};
 
 const Breadcrumbs: FC<IBreadcrumbsProps> = ({}) => {
     return (
@@ -13,6 +14,6 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = ({}) => {
             <li className={styles.active}>32 GB</li>
         </ul>
     )
-}
+};
 
-export default Breadcrumbs
+export default Breadcrumbs;

@@ -61,4 +61,4 @@ const ProductsList: FC<IProductsListProps> = ({ products }) => {
     )
 }
 
-export default ProductsList
+export default ProductsList;

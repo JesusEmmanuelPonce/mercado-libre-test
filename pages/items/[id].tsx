@@ -1,16 +1,16 @@
 import { NextPage, GetServerSideProps } from 'next';
 
 import AppLayout from '../../components/AppLayout';
-import axiosClient from '../../helpers/axiosClient';
 import { IBodyItem } from '../../interfaces';
+import { setTitleTag } from '../../helpers/setTags';
 import { getCondition } from '../../helpers/getCondition';
 import { currencyFormat } from '../../helpers/currencyFormat';
+import { getProductDetail, getProductDescription } from '../../services/products';
 import styles from "./items.module.scss";
-import { setTitleTag } from '../../helpers/setTags';
 
 interface IProductDetailProps {
     product: IBodyItem;
-}
+};
 
 const ProductDetail: NextPage<IProductDetailProps> = ({ product }) => {
 
@@ -43,8 +43,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
     const { id } = params as { id: string };
 
-    const { data } = await axiosClient.get(`/items/${id}`);
-    const { data: dataToDescription } = await axiosClient.get(`/items/${id}/description`);
+    const data = await getProductDetail(id);
+    const dataToDescription = await getProductDescription(id);
 
     const body = {
         author: {
@@ -72,6 +72,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 			product: body,
 		}
 	}
-}
+};
 
 export default ProductDetail;

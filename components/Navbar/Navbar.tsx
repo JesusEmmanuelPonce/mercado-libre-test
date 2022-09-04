@@ -6,7 +6,7 @@ import Logo  from "/public/img/logo.png"
 import InputSearch from '../Ui/InputSearch';
 import styles from "./navbar.module.scss";
 
-interface INavbarProps {}
+interface INavbarProps {};
 
 const Navbar: FC<INavbarProps> = ({}) => {
 
@@ -14,7 +14,7 @@ const Navbar: FC<INavbarProps> = ({}) => {
 
     const handleToHome = () => {
         router.push("/");
-    }
+    };
 
     return (
         <nav className={styles.navbar}>
@@ -36,6 +36,6 @@ const Navbar: FC<INavbarProps> = ({}) => {
             </section>
         </nav>
     )
-}
+};
 
 export default Navbar;

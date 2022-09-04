@@ -3,9 +3,10 @@ interface IArrItem {
     id: string;
     name: string;
     results: number;
-}
+};
 
-export const getCategories = (arr: IArrItem[]) => {
+export const getCategories = (arr: IArrItem[] = []) => {
+
     let categories: string[] = [];
 
     arr.forEach((element: IArrItem) => {
@@ -14,4 +15,4 @@ export const getCategories = (arr: IArrItem[]) => {
     });
 
     return categories;
-}
+};
